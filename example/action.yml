@@ -12,10 +12,10 @@ runs:
     
 
     - name: Set Greeting
-      run: ${{github.action_path}}
+      run: echo "${{github.action_path}}"
       shell: bash
 
     - name: Run other.sh
-      run: ./${{github.action_path}}/other.sh
+      run: cd ${{github.action_path}} && ./other.sh
       shell: bash
 
