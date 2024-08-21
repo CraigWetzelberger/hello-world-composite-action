@@ -8,6 +8,8 @@ runs:
       with:
         node-version: 20
     - run: node --version
+      shell: bash
+    
 
 
     # WORKS.
