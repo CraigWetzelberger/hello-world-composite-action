@@ -1,5 +1,5 @@
 
-export default function component() {
+function component() {
   console.log('!!!!!!!!----------------from index.js')
 
   function Test() {
