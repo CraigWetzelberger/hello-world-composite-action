@@ -16,6 +16,8 @@ runs:
       with:
         node-version: 16
     - name: Set Greeting
+    - run: npm --version
+      name: Check NPM Version
       run: echo "Hello $INPUT_WHO_TO_GREET."
       shell: bash
       env:
