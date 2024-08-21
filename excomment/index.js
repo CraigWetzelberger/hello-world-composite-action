@@ -1,7 +1,7 @@
 
 function component() {
   console.log('!!!!!!!!----------------from index.js')
-  console.log('Github access token :', process.env.GETIHB_ACCESS_TOKEN )
+  console.log('Github access token :', process.env.GITHUB_ACCESS_TOKEN )
 
 
   process.env['GITHUB_OUTPUT'] = 'index-output=1234'
