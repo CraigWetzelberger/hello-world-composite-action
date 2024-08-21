@@ -14,8 +14,7 @@ runs:
       with:
         result-encoding: string
         script: |
-          const script = require("${{github.action_path}}/index.js")
-          script({core})
+          require("${{github.action_path}}/index.js")
 
     #- name: Set Greeting
     #  run: echo "${{github.action_path}}"
