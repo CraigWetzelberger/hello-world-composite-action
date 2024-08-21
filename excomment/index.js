@@ -1,7 +1,13 @@
 
 function component() {
   console.log('!!!!!!!!----------------from index.js')
-  console.log('Github access token :', process.env.GITHUB_ACCESS_TOKEN )
+
+  if(process.env.GITHUB_ACCESS_TOKEN !== undefined){
+    console.log('Github access token : set' );
+  }else{;
+    console.log('Github access token : not set' )
+  }
+
 
 
   process.env['GITHUB_OUTPUT'] = 'index-output=1234'

@@ -5,11 +5,9 @@ inputs:
   github_access_token:  # id of input
     description: ''
     required: true
-    default: 'World'
 
 outputs:
   some-text:
-    description: "some text"
     value: ${{ steps.example-run-result.outputs.index-output }}
 
 runs:
