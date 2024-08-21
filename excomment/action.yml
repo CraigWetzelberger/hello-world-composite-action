@@ -27,15 +27,18 @@ runs:
     - run: echo OUTPUT ${{ steps.example-run-result.outputs.index-output }}
       shell: bash
     - uses: actions/github-script@v6
+      env: MSG: ${{ steps.example-run-result.outputs.index-output }}
       with:
         github-token: ${{inputs.github_access_token}}
-        example-run-result: ${{ steps.example-run-result.outputs.index-output }}
         script: |
+          const { MSG } = process.env
           github.rest.issues.createComment({
             issue_number: context.issue.number,
             owner: context.repo.owner,
             repo: context.repo.repo,
-            body: '👋 Thanks for reporting! ${{inputs.example-run-result}} !'})
+            body: '👋 Thanks for reporting! ${MSG} !'})
+
+
               
 
 
