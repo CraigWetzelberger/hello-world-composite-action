@@ -1,7 +1,6 @@
 
-console.log('!!!!!!!!----------------from index.js')
-
-function component() {
+export default function component() {
+  console.log('!!!!!!!!----------------from index.js')
 
   function Test() {
     return 'hello from Test'
@@ -14,4 +13,3 @@ function component() {
 }
 
 
-export default component;
