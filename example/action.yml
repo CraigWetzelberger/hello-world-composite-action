@@ -13,7 +13,9 @@ runs:
       id: my-script
       with:
         result-encoding: string
-        script: console.log("hello from javascript!")
+        script: |
+          const script = require("${{github.action_path}}/index.js")
+          script({core})
 
     #- name: Set Greeting
     #  run: echo "${{github.action_path}}"
