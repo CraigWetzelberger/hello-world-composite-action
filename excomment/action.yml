@@ -27,7 +27,8 @@ runs:
     - run: echo OUTPUT ${{ steps.example-run-result.outputs.index-output }}
       shell: bash
     - uses: actions/github-script@v6
-      env: MSG: ${{ steps.example-run-result.outputs.index-output }}
+      env: 
+        MSG: ${{ steps.example-run-result.outputs.index-output }}
       with:
         github-token: ${{inputs.github_access_token}}
         script: |
