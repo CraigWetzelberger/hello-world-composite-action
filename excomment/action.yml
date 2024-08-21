@@ -26,13 +26,15 @@ runs:
         GITHUB_ACCESS_TOKEN: ${{ inputs.github_access_token }}
     - run: echo OUTPUT ${{ steps.example-run-result.outputs.index-output }}
       shell: bash
-    - uses: actions/github-script@v6
+    - uses: actions/github-script@v7
       env: 
         MSG: ${{ steps.example-run-result.outputs.index-output }}
       with:
         github-token: ${{inputs.github_access_token}}
         script: |
           const { MSG } = process.env
+          console.log('MSG', MSG)
+
           github.rest.issues.createComment({
             issue_number: context.issue.number,
             owner: context.repo.owner,
