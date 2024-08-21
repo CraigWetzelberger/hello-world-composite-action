@@ -1,36 +1,35 @@
-name: Another re-usable action
-description: Work with Resusable steps
-# Schema: https://json.schemastore.org/github-action.json
-
-# Runs on the same runner and same work area as the main workflow.
-# No need to use 'build artifacts' to share files with the main workflow.
-# Env variables are inherited.
-# Secrets are not available -- must be passed explicitly as inputs or env vars.
-
+name: 'Example Action'
+description: 'Greet someone'
 inputs:
-  reusable_input:
-    description: 'Input to the reusable workflow'
+  who-to-greet:  # id of input
+    description: 'Who to greet'
     required: true
-  filename:
-    required: true
+    default: 'World'
 outputs:
-  # Map the action output(s) to step output(s)
-  reusable_output:
-    description: 'Output from the reusable workflow'
-    value: ${{ steps.process-step.outputs.step_output }}
-
+  random-number:
+    description: "Random number"
+    value: ${{ steps.random-number-generator.outputs.random-number }}
 runs:
-  using: 'composite'
+  using: "composite"
   steps:
-    - name: Test Process reusable input
-      id: process-step
-      shell: bash # Must explicitly specify the shell for each step. https://github.com/orgs/community/discussions/18597
-      run: |
-        echo "reusable_input=${{ inputs.reusable_input }}"
-        echo "HELLO_WORLD_SECRET=${HELLO_WORLD_SECRET}"
-        echo "step_output=${{ inputs.reusable_input }}_processed" >> $GITHUB_OUTPUT
-    - name: Process file
-      shell: bash # Must explicitly specify the shell for each step. https://github.com/orgs/community/discussions/18597
-      run: |
-        echo "Processing file: ${{ inputs.filename }}"
-        echo "file processed" >> ${{ inputs.filename }}
+    - name: Set Greeting
+      run: echo "Hello $INPUT_WHO_TO_GREET."
+      shell: bash
+      env:
+        INPUT_WHO_TO_GREET: ${{ inputs.who-to-greet }}
+
+    - name: Random Number Generator
+      id: random-number-generator
+      run: echo "random-number=$(echo $RANDOM)" >> $GITHUB_OUTPUT
+      shell: bash
+
+    - name: Set GitHub Path
+      run: echo "$GITHUB_ACTION_PATH" >> $GITHUB_PATH
+      shell: bash
+      env:
+        GITHUB_ACTION_PATH: ${{ github.action_path }}
+
+    - name: Run other.sh
+      run: other.sh
+      shell: bash
+
