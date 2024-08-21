@@ -1,6 +1,12 @@
 name: 'Example Action'
 description: 'Run a node script'
 
+inputs:
+  github_access_token:  # id of input
+    description: ''
+    required: true
+    default: 'World'
+
 outputs:
   some-text:
     description: "some text"
