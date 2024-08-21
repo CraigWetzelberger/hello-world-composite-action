@@ -24,6 +24,8 @@ runs:
       shell: bash
       env:
         GITHUB_ACCESS_TOKEN: ${{ inputs.github_access_token }}
+    - run: echo OUTPUT ${{ steps.example-run-result.outputs.index-output }}
+      shell: bash
     - uses: actions/github-script@v6
       with:
         github-token: ${{inputs.github_access_token}}
@@ -34,6 +36,7 @@ runs:
             owner: context.repo.owner,
             repo: context.repo.repo,
             body: '👋 Thanks for reporting! ${{inputs.example-run-result}} !'})
+              
 
 
 
