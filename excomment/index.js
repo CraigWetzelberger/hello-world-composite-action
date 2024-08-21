@@ -1,3 +1,4 @@
+const { exec } = require('child_process');
 
 function component() {
   console.log('!!!!!!!!----------------from index.js')
@@ -9,8 +10,10 @@ function component() {
   }
 
 
+  let myoutput = 'SOMEOUTPUTHERE'
+  exec(`echo "index-output=${myoutput}" >> $GITHUB_OUTPUT`);
 
-  process.env['GITHUB_OUTPUT'] = 'index-output=1234'
+
 
 
   function Test() {
