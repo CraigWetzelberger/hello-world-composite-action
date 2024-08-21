@@ -12,6 +12,9 @@ outputs:
 runs:
   using: "composite"
   steps:
+    - uses: actions/setup-node@v3.6.0
+      with:
+        node-version: 16
     - name: Set Greeting
       run: echo "Hello $INPUT_WHO_TO_GREET."
       shell: bash
