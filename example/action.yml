@@ -12,10 +12,10 @@ runs:
     
 
     - name: Set Greeting
-      run: pwd
+      run: ${{github.action_path}}
       shell: bash
 
     - name: Run other.sh
-      run: other.sh
+      run: ./${{github.action_path}}/other.sh
       shell: bash
 
