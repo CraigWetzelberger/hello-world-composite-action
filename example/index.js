@@ -2,6 +2,10 @@
 function component() {
   console.log('!!!!!!!!----------------from index.js')
 
+
+  process.env['GITHUB_OUTPUT'] = 'random-number=1234'
+
+
   function Test() {
     return 'hello from Test'
   }
@@ -12,4 +16,6 @@ function component() {
   }
 }
 
+
+component()
 
