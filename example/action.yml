@@ -9,7 +9,11 @@ runs:
     #    node-version: 16
     #- name: Check Node Version
     #  run: node --version
+    
 
+    - name: Set Greeting
+      run: pwd
+      shell: bash
 
     - name: Run other.sh
       run: other.sh
