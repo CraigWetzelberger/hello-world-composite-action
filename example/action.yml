@@ -1,20 +1,22 @@
 name: 'Example Action'
-description: 'Greet someone'
+description: 'Run a node script'
 
 runs:
   using: "composite"
   steps:
-    #- uses: actions/setup-node@v3.6.0
-    #  with:
-    #    node-version: 16
-    #- name: Check Node Version
-    #  run: node --version
-    - uses: actions/github-script@v7
-      id: my-script
+    - uses: actions/setup-node@v4
       with:
-        result-encoding: string
-        script: |
-          require("${{github.action_path}}/index.js")
+        node-version: 20
+    - run: node --version
+
+
+    # WORKS.
+    #- uses: actions/github-script@v7
+    #  id: my-script
+    #  with:
+    #    result-encoding: string
+    #    script: |
+    #      require("${{github.action_path}}/index.js")
 
     #- name: Set Greeting
     #  run: echo "${{github.action_path}}"
