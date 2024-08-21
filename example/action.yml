@@ -15,9 +15,9 @@ runs:
     - uses: actions/setup-node@v3.6.0
       with:
         node-version: 16
+    - name: Check Node Version
+      run: node --version
     - name: Set Greeting
-    - run: npm --version
-      name: Check NPM Version
       run: echo "Hello $INPUT_WHO_TO_GREET."
       shell: bash
       env:
